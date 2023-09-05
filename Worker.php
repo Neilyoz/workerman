@@ -574,6 +574,7 @@ class Worker
     }
 
     /**
+     * 检测 sapi 环境 只能在命令行模式下运行
      * Check sapi.
      *
      * @return void
@@ -590,29 +591,31 @@ class Worker
     }
 
     /**
+     * 初始化
      * Init.
      *
      * @return void
      */
     protected static function init()
     {
+        // 设置错误处理
         \set_error_handler(function($code, $msg, $file, $line){
             Worker::safeEcho("$msg in file $file on line $line\n");
         });
 
-        // Start file.
-        $backtrace        = \debug_backtrace();
+        // Start file. 根据追溯返回 php 执行文件的路径
+        $backtrace          = \debug_backtrace();
         static::$_startFile = $backtrace[\count($backtrace) - 1]['file'];
 
-
+        // 给开始文件一个唯一前缀
         $unique_prefix = \str_replace('/', '_', static::$_startFile);
 
-        // Pid file.
+        // Pid file. 设置一个唯一的 pid 文件
         if (empty(static::$pidFile)) {
             static::$pidFile = __DIR__ . "/../$unique_prefix.pid";
         }
 
-        // Log file.
+        // Log file. 加载日志文件
         if (empty(static::$logFile)) {
             static::$logFile = __DIR__ . '/../workerman.log';
         }
@@ -622,10 +625,10 @@ class Worker
             \chmod($log_file, 0622);
         }
 
-        // State.
+        // State. 设置运行状态为 STATUS_STARTING
         static::$_status = static::STATUS_STARTING;
 
-        // For statistics.
+        // For statistics. 统计数据
         static::$_globalStatistics['start_timestamp'] = \time();
 
         // Process title.
