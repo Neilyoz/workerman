@@ -631,7 +631,7 @@ class Worker
         // For statistics. 统计数据是数组 'start_timestamp' 记录一个开始时间
         static::$_globalStatistics['start_timestamp'] = \time();
 
-        // Process title.
+        // Process title. 给进程设置一个名称
         static::setProcessTitle(static::$processTitle . ': master process  start_file=' . static::$_startFile);
 
         // Init data for worker id.
