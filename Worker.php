@@ -30,6 +30,7 @@ use \Exception;
 class Worker
 {
     /**
+     * 版本号
      * Version.
      *
      * @var string
@@ -37,6 +38,7 @@ class Worker
     const VERSION = '4.1.14';
 
     /**
+     * 程序状态：开始运行
      * Status starting.
      *
      * @var int
@@ -44,6 +46,7 @@ class Worker
     const STATUS_STARTING = 1;
 
     /**
+     * 程序状态：运行中
      * Status running.
      *
      * @var int
@@ -51,6 +54,7 @@ class Worker
     const STATUS_RUNNING = 2;
 
     /**
+     * 程序状态：已关闭
      * Status shutdown.
      *
      * @var int
@@ -58,6 +62,7 @@ class Worker
     const STATUS_SHUTDOWN = 4;
 
     /**
+     * 程序状态：重新加载
      * Status reloading.
      *
      * @var int
@@ -93,6 +98,7 @@ class Worker
     public $id = 0;
 
     /**
+     * 工作进程的名称
      * Name of the worker processes.
      *
      * @var string
@@ -100,6 +106,7 @@ class Worker
     public $name = 'none';
 
     /**
+     * 工作进程数量
      * Number of worker processes.
      *
      * @var int
@@ -107,6 +114,7 @@ class Worker
     public $count = 1;
 
     /**
+     * 工作进程所属用户
      * Unix user of processes, needs appropriate privileges (usually root).
      *
      * @var string
@@ -114,6 +122,7 @@ class Worker
     public $user = '';
 
     /**
+     * 工作进程所属用户组
      * Unix group of processes, needs appropriate privileges (usually root).
      *
      * @var string
@@ -121,6 +130,7 @@ class Worker
     public $group = '';
 
     /**
+     * 是否允许重新加载
      * reloadable.
      *
      * @var bool
@@ -128,6 +138,7 @@ class Worker
     public $reloadable = true;
 
     /**
+     * 是否端口服用
      * reuse port.
      *
      * @var bool
