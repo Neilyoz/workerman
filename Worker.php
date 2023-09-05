@@ -628,7 +628,7 @@ class Worker
         // State. 设置运行状态为 STATUS_STARTING
         static::$_status = static::STATUS_STARTING;
 
-        // For statistics. 统计数据
+        // For statistics. 统计数据是数组 'start_timestamp' 记录一个开始时间
         static::$_globalStatistics['start_timestamp'] = \time();
 
         // Process title.
